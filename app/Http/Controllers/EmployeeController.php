@@ -24,17 +24,17 @@ class EmployeeController extends Controller
     {
         $request->validate([
             'jabatan_id' => 'required',
-            'nama'       => 'required|string|max:255',
-            'email'      => 'required|email|unique:employees,email',
-            'alamat'     => 'nullable|string',
-            'foto'       => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'nama' => 'required|string|max:255',
+            'email' => 'required|email|unique:employees,email',
+            'alamat' => 'nullable|string',
+            'foto' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
         $data = [
             'jabatan_id' => $request->jabatan_id,
-            'nama'       => $request->nama,
-            'email'      => $request->email,
-            'alamat'     => $request->alamat,
+            'nama' => $request->nama,
+            'email' => $request->email,
+            'alamat' => $request->alamat,
         ];
 
         // Upload foto
@@ -99,8 +99,8 @@ class EmployeeController extends Controller
 
             // Update field img di database
             $employee->update($data);
-
-            return redirect()->route('emp')->with('success', 'Data pegawai berhasil diperbarui.');
         }
+
+        return redirect()->route('emp')->with('success', 'Data pegawai berhasil diperbarui.');
     }
 }
